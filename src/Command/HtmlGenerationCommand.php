@@ -41,9 +41,6 @@ class HtmlGenerationCommand extends Command
         foreach ($deck->getCards() as $card) {
             $output->writeln(sprintf('- %s', $card));
         }
-        if ($deck->validate()) {
-            $output->writeln('Deck is valid: <info>true</info>');
-        }
     }
 
 }

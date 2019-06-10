@@ -4,19 +4,29 @@ declare(strict_types=1);
 
 namespace Mbiz\Dobble;
 
+use Mbiz\Dobble\Factory\SymbolFactory;
+
 class Card implements CardInterface
 {
+    private $symbols = [];
+
     public function __construct($card)
     {
-        foreach ($card as $symbol) {
+        $factory = new SymbolFactory();
 
+        foreach ($card->getSymbols() as $symbol) {
+            $this->symbols[] = $factory->convert($symbol);
         }
     }
 
     public function getSymbols(): array
     {
-        // TODO: Implement getSymbols() method.
-        return [];
+        return $this->symbols;
     }
 
+
+    public function __toString()
+    {
+        return sprintf('<Card: %s>', implode(', ', $this->symbols));
+    }
 }

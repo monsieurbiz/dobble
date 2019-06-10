@@ -15,10 +15,7 @@ class Deck implements DeckInterface, \Countable
      */
     const NUMBER_OF_ELEMENTS_PER_CARD = 8;
 
-    /**
-     * @var BaseDeck
-     */
-    private $deck;
+    private $cards = [];
 
     /**
      * Deck constructor.
@@ -26,16 +23,21 @@ class Deck implements DeckInterface, \Countable
     public function __construct()
     {
         $deckGenerator = new DeckGenerator(self::NUMBER_OF_ELEMENTS_PER_CARD);
-        $this->deck = $deckGenerator->generate();
+        $basedeck = $deckGenerator->generate();
 
-        foreach ($this->deck->getCards() as $card) {
-            $mbizCard = new Card($card);
+        foreach ($basedeck->getCards() as $card) {
+            $this->append(new Card($card));
         }
+    }
+
+    public function append(Card $card)
+    {
+        array_push($this->cards, $card);
     }
 
     public function getCards(): array
     {
-        return $this->deck->getCards();
+        return $this->cards;
     }
 
     /**
@@ -43,15 +45,6 @@ class Deck implements DeckInterface, \Countable
      */
     public function count()
     {
-        return count($this->deck);
-    }
-
-    /**
-     * @return bool
-     * @throws DobbleException
-     */
-    public function validate()
-    {
-        return DeckValidator::validate($this);
+        return count($this->getCards());
     }
 }
