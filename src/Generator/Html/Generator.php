@@ -10,12 +10,24 @@ use Mbiz\Dobble\Generator\GeneratorInterface;
 class Generator implements GeneratorInterface
 {
 
+    /** @var string */
+    private $outputDirectory;
+
+    /**
+     * Generator constructor.
+     *
+     * @param string $outputDirectory
+     */
+    public function __construct(string $outputDirectory)
+    {
+        $this->outputDirectory = $outputDirectory;
+    }
+        
     /**
      * @param DeckInterface $deck
      */
     public function generate(DeckInterface $deck): void
     {
-        return;
     }
 
 }
