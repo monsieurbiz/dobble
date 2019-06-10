@@ -22,12 +22,14 @@ class Generator implements GeneratorInterface
     {
         $this->outputDirectory = $outputDirectory;
     }
-        
+    
     /**
      * @param DeckInterface $deck
      */
     public function generate(DeckInterface $deck): void
     {
+        if (!is_dir($this->outputDirectory)) {
+            mkdir($this->outputDirectory);
+        }
     }
-
 }
