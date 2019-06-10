@@ -10,8 +10,8 @@ use Mbiz\Dobble\Symbol\SymbolInterface;
 class SymbolFactory implements SymbolInterface
 {
 
-    public function convert($symbol){
-
+    public function create($symbol)
+    {
         return EmojiInterface::EMOJIS[$symbol];
     }
 

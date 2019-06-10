@@ -15,7 +15,7 @@ class Card implements CardInterface
         $factory = new SymbolFactory();
 
         foreach ($card->getSymbols() as $symbol) {
-            $this->symbols[] = $factory->convert($symbol);
+            $this->symbols[] = $factory->create($symbol);
         }
     }
 
