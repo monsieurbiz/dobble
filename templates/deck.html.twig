@@ -1,3 +1,89 @@
-{%  for card in deck.getCards() %}
-    {% include 'card.html.twig' with {'card': card} %}
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <style>
+        html, body {
+            min-height: 100vh;
+        }
+
+        .card {
+            border: .1em solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-content: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            height: 18em;
+            width: 18em;
+            float: left;
+            margin: 1em;
+        }
+
+        .symbol {
+            background: transparent;
+            font-size: 3em;
+            line-height: 1;
+            outline: 0;
+            padding: 0;
+        }
+
+        .symbol:nth-child(1) {
+            font-size: 3.2em;
+            transform: rotate(140deg);
+        }
+        .symbol:nth-child(2) {
+            font-size: 3.3em;
+            transform: rotate(180deg);
+            position: relative;
+            top: -1.25em;
+        }
+        .symbol:nth-child(3) {
+            font-size: 3.7em;
+            transform: rotate(-130deg);
+            position: relative;
+            top: -0.7em;
+            right: -0.6em;
+        }
+        .symbol:nth-child(4) {
+            font-size: 2.8em;
+            transform: rotate(90deg);
+            position: relative;
+            right: -0.6em;
+            top: -1em;
+        }
+        .symbol:nth-child(5) {
+            font-size: 3.8em;
+            position: relative;
+            right: 0.3em;
+            bottom: -1em;
+        }
+        .symbol:nth-child(6) {
+            font-size: 3.1em;
+            transform: rotate(-90deg);
+            position: relative;
+            right: -.25em;
+            bottom: -0.9em;
+        }
+        .symbol:nth-child(7) {
+            font-size: 3.3em;
+            transform: rotate(30deg);
+        }
+        .symbol:nth-child(8) {
+            font-size: 2.8em;
+            transform: rotate(-30deg);
+            bottom: -1.5em;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<div class="deck">
+    {% for card in deck.getCards() %}
+        {% include 'card.html.twig' with {'card': card} %}
+    {% endfor %}
+</div>
+</body>
+</html>
+
