@@ -5,7 +5,7 @@
     "license": "MIT",
     "minimum-stability": "dev",
     "repositories": [
-        {"type": "git", "url": "https://github.com/marmelab/dobble-php.git"}
+        {"type": "git", "url": "https://github.com/monsieurbiz/dobble-php.git"}
     ],
     "require": {
         "php": "^7.3.0",
@@ -16,5 +16,8 @@
         "psr-4": {
             "Mbiz\\Dobble\\": "src/"
         }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "~4.3.0"
     }
 }
