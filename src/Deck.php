@@ -27,6 +27,10 @@ class Deck implements DeckInterface, \Countable
     {
         $deckGenerator = new DeckGenerator(self::NUMBER_OF_ELEMENTS_PER_CARD);
         $this->deck = $deckGenerator->generate();
+
+        foreach ($this->deck->getCards() as $card) {
+            $mbizCard = new Card($card);
+        }
     }
 
     public function getCards(): array
