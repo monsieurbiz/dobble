@@ -9,7 +9,7 @@ class EmojiCollection implements CollectionInterface
 
     public function getValues(): array
     {
-        return [
+        $emojis = [
             '🤣', '🤡', '😨', '🤔', '🤨', '😐', '😑', '😶', '🙄',
             '😏', '😣', '😥', '😳', '🤪', '😵', '😡', '😠', '🤬',
             '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '😇', '🤠', '🤲',
@@ -18,6 +18,12 @@ class EmojiCollection implements CollectionInterface
             '😻', '🖐', '🖖', '👋', '🤙', '💪', '🐦', '🍄', '💻',
             '🤕', '🤢', '🤮',
         ];
+
+        $values = [];
+
+        foreach ($emojis as $emoji) {
+            $values[] = new Value\Emoji();
+        }
     }
 
 }

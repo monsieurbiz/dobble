@@ -4,24 +4,26 @@ declare(strict_types=1);
 
 namespace Mbiz\Dobble\Symbol;
 
+use Mbiz\Dobble\Collection\Value\Emoji as EmojiValue;
+
 class Emoji implements SymbolInterface, EmojiInterface
 {
 
-    /** @var string */
+    /** @var EmojiValue */
     private $emoji;
 
     /**
-     * @param string $emoji
+     * @param EmojiValue $emoji
      */
-    public function setEmoji(string $emoji): void
+    public function setEmoji(EmojiValue $emoji): void
     {
         $this->emoji = $emoji;
     }
 
     /**
-     * @return string
+     * @return EmojiValue
      */
-    public function getEmoji(): string
+    public function getEmoji(): EmojiValue
     {
         return $this->emoji;
     }
@@ -31,7 +33,7 @@ class Emoji implements SymbolInterface, EmojiInterface
      */
     public function __toString(): string
     {
-        return $this->getEmoji();
+        return $this->getEmoji()->getValue();
     }
 
 }

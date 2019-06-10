@@ -6,7 +6,11 @@ namespace Mbiz\Dobble\Factory;
 
 use Mbiz\Dobble\Collection\CollectionInterface;
 use Mbiz\Dobble\Collection\EmojiCollection;
-use Mbiz\Dobble\Symbol\Emoji;
+use Mbiz\Dobble\Collection\FilesCollection;
+use Mbiz\Dobble\Collection\Value\Emoji as EmojiValue;
+use Mbiz\Dobble\Collection\Value\File as FileValue;
+use Mbiz\Dobble\Symbol\Emoji as EmojiSymbol;
+//use Mbiz\Dobble\Symbol\File as FileSymbol;
 use Mbiz\Dobble\Symbol\SymbolInterface;
 
 class SymbolFactory implements FactoryInterface
@@ -33,6 +37,7 @@ class SymbolFactory implements FactoryInterface
     public function __construct()
     {
         $this->collections[] = new EmojiCollection();
+        $this->collections[] = new FilesCollection();
         $this->generateMapping();
     }
 
@@ -57,8 +62,19 @@ class SymbolFactory implements FactoryInterface
      */
     public function create($symbolValue): SymbolInterface
     {
-        $symbol = new Emoji();
-        $symbol->setEmoji($this->mapping[$symbolValue]);
+        $value = $this->mapping[$symbolValue];
+
+        switch (true) {
+            case $value instanceof EmojiValue:
+                $symbol = new EmojiSymbol();
+                $symbol->setEmoji($value);
+                break;
+            case $value instanceof FileValue:
+                $symbol = new File();
+                $symbol->setEmoji($value);
+                break;
+        }
+
         return $symbol;
     }
 
