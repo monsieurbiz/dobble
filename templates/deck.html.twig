@@ -3,6 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <style>
+        @media print
+        {
+            .card {
+                break-inside: avoid;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         html, body {
             min-height: 100vh;
         }
@@ -14,10 +25,11 @@
             align-content: center;
             flex-wrap: wrap;
             justify-content: center;
-            height: 18em;
-            width: 18em;
+            height: 19em;
+            width: 19em;
             float: left;
-            margin: 1em;
+            margin: 0.5em;
+            margin: 0.5em;
         }
 
         .symbol {
