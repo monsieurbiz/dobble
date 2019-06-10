@@ -9,12 +9,13 @@ use Mbiz\Dobble\Collection\EmojiCollection;
 use Mbiz\Dobble\Symbol\Emoji;
 use Mbiz\Dobble\Symbol\SymbolInterface;
 
-class SymbolFactory
+class SymbolFactory implements FactoryInterface
 {
 
     /** @var CollectionInterface[] */
     private $collections;
 
+    /** @var array */
     public $mappingKeys = [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
         'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
@@ -23,8 +24,12 @@ class SymbolFactory
         26, 27, 28, 29, 30, 31,
     ];
 
+    /** @var array */
     public $mapping = [];
 
+    /**
+     * SymbolFactory constructor.
+     */
     public function __construct()
     {
         $this->collections[] = new EmojiCollection();
