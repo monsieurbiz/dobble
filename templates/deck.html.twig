@@ -1,0 +1,3 @@
+{%  for card in deck.getCards() %}
+    {% include 'card.html.twig' with {'card': card} %}
+{% endfor %}

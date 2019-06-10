@@ -13,7 +13,6 @@ use Twig\Loader\FilesystemLoader as TwigFilesystemLoader;
 class Generator implements GeneratorInterface
 {
     const TEMPLATE_FOLDER = 'templates';
-    const CACHER_FOLDER = 'cache';
 
     /** @var string */
     private $outputDirectory;
@@ -21,21 +20,16 @@ class Generator implements GeneratorInterface
     /** @var string|null */
     private $templateDirectory;
 
-    /** @var string|null */
-    private $cacheDirectory;
-    
     /**
      * Generator constructor.
      *
      * @param string $outputDirectory
      * @param string|null $templateDirectory
-     * @param string|null $cacheDirectory
      */
-    public function __construct(string $outputDirectory, ?string $templateDirectory, ?string $cacheDirectory)
+    public function __construct(string $outputDirectory, ?string $templateDirectory)
     {
         $this->outputDirectory = $outputDirectory;
         $this->templateDirectory = $templateDirectory;
-        $this->cacheDirectory = $cacheDirectory;
     }
 
     /**
@@ -57,9 +51,7 @@ class Generator implements GeneratorInterface
         }
     
         $loader = new TwigFilesystemLoader($this->templateDirectory ?? self::TEMPLATE_FOLDER);
-        $twig = new TwigEnvironment($loader, [
-            'cache' => $this->cacheDirectory ?? self::CACHER_FOLDER,
-        ]);
+        $twig = new TwigEnvironment($loader);
 
         file_put_contents(
             $this->outputDirectory . DIRECTORY_SEPARATOR .  'deck.html',
