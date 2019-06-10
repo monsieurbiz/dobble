@@ -10,10 +10,8 @@ class Card implements CardInterface
 {
     private $symbols = [];
 
-    public function __construct($card)
+    public function __construct($card, SymbolFactory $factory)
     {
-        $factory = new SymbolFactory();
-
         foreach ($card->getSymbols() as $symbol) {
             $this->symbols[] = $factory->create($symbol);
         }

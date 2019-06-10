@@ -3,10 +3,8 @@ declare(strict_types=1);
 
 namespace Mbiz\Dobble;
 
-use Marmelab\Dobble\Deck as BaseDeck;
 use Marmelab\Dobble\DeckGenerator;
-use Marmelab\Dobble\DeckValidator;
-use Marmelab\Dobble\DobbleException;
+use Mbiz\Dobble\Factory\SymbolFactory;
 
 class Deck implements DeckInterface, \Countable
 {
@@ -25,8 +23,10 @@ class Deck implements DeckInterface, \Countable
         $deckGenerator = new DeckGenerator(self::NUMBER_OF_ELEMENTS_PER_CARD);
         $basedeck = $deckGenerator->generate();
 
+        $factory = new SymbolFactory();
+
         foreach ($basedeck->getCards() as $card) {
-            $this->cards[] = new Card($card);
+            $this->cards[] = new Card($card, $factory);
         }
     }
 
