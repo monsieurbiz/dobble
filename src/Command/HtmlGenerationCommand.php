@@ -6,6 +6,7 @@ namespace Mbiz\Dobble\Command;
 use Mbiz\Dobble\Deck;
 use Mbiz\Dobble\Generator\Html\Generator;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -19,6 +20,7 @@ class HtmlGenerationCommand extends Command
     {
         $this->setName('dobble:generate:html');
         $this->setDescription('Generate the Dobble game in HTML.');
+        $this->addArgument('output', InputArgument::REQUIRED, 'Directory where the HTML files will be generated.');
     }
 
     /**
