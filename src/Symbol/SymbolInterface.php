@@ -6,4 +6,7 @@ namespace Mbiz\Dobble\Symbol;
 
 interface SymbolInterface
 {
+
+    public function __toString(): string;
+
 }
