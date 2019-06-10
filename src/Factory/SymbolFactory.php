@@ -44,6 +44,8 @@ class SymbolFactory implements FactoryInterface
             $values += $collection->getValues();
         }
 
+        shuffle($values);
+
         $mappingValues = array_slice($values, 0, count($this->mappingKeys));
         $this->mapping = array_combine($this->mappingKeys, $mappingValues);
     }
