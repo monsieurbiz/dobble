@@ -33,6 +33,17 @@ class HtmlGenerationCommand extends Command
         $deck = new Deck();
         $generator = new Generator();
         $generator->generate($deck);
+
+        $output->writeln(sprintf('Elements per card: <info>%d</info>', Deck::NUMBER_OF_ELEMENTS_PER_CARD));
+        $output->writeln(sprintf('Deck generated with <info>%d</info> cards', count($deck)));
+        $output->writeln('Cards :');
+
+        foreach ($deck->getCards() as $card) {
+            $output->writeln(sprintf('- %s', $card));
+        }
+        if ($deck->validate()) {
+            $output->writeln('Deck is valid: <info>true</info>');
+        }
     }
 
 }
