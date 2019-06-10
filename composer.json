@@ -8,6 +8,13 @@
         {"type": "git", "url": "https://github.com/marmelab/dobble-php.git"}
     ],
     "require": {
-        "marmelab/dobble-php": "dev-master"
+        "php": "^7.3.0",
+        "marmelab/dobble-php": "dev-master",
+        "twig/twig": "3.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mbiz\\Dobble\\": "src/"
+        }
     }
 }
