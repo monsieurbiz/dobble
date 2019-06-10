@@ -18,14 +18,24 @@ class Generator implements GeneratorInterface
     /** @var string */
     private $outputDirectory;
 
+    /** @var string|null */
+    private $templateDirectory;
+
+    /** @var string|null */
+    private $cacheDirectory;
+    
     /**
      * Generator constructor.
      *
      * @param string $outputDirectory
+     * @param string|null $templateDirectory
+     * @param string|null $cacheDirectory
      */
-    public function __construct(string $outputDirectory)
+    public function __construct(string $outputDirectory, ?string $templateDirectory, ?string $cacheDirectory)
     {
         $this->outputDirectory = $outputDirectory;
+        $this->templateDirectory = $templateDirectory;
+        $this->cacheDirectory = $cacheDirectory;
     }
 
     /**
@@ -46,9 +56,9 @@ class Generator implements GeneratorInterface
             throw new NotWritableOutputDirectoryException();
         }
     
-        $loader = new TwigFilesystemLoader(self::TEMPLATE_FOLDER);
+        $loader = new TwigFilesystemLoader($this->templateDirectory ?? self::TEMPLATE_FOLDER);
         $twig = new TwigEnvironment($loader, [
-            'cache' => self::CACHER_FOLDER,
+            'cache' => $this->cacheDirectory ?? self::CACHER_FOLDER,
         ]);
 
         file_put_contents(
