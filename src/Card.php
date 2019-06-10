@@ -6,6 +6,12 @@ namespace Mbiz\Dobble;
 
 class Card implements CardInterface
 {
+    public function __construct($card)
+    {
+        foreach ($card as $symbol) {
+
+        }
+    }
 
     public function getSymbols(): array
     {
