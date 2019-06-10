@@ -33,7 +33,7 @@ class HtmlGenerationCommand extends Command
     {
         // Get a deck, generate it in HTML
         $deck = new Deck();
-        $generator = new Generator();
+        $generator = new Generator($input->getArgument('output'));
         $generator->generate($deck);
 
         $output->writeln(sprintf('Elements per card: <info>%d</info>', Deck::NUMBER_OF_ELEMENTS_PER_CARD));
