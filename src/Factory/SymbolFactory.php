@@ -3,9 +3,16 @@ declare(strict_types=1);
 
 namespace Mbiz\Dobble\Factory;
 
-use Mbiz\Dobble\SymbolInterface;
+
+use Mbiz\Dobble\Symbol\EmojiInterface;
+use Mbiz\Dobble\Symbol\SymbolInterface;
 
 class SymbolFactory implements SymbolInterface
 {
+
+    public function convert($symbol){
+
+        return EmojiInterface::EMOJIS[$symbol];
+    }
 
 }
